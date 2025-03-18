@@ -54,7 +54,7 @@ func (e *SymmetricIdEncryptor) Decrypt(encryptedId string) (string, error) {
 
 	id, err := e.gcm.Open(nil, []byte(nonce), []byte(encryptedId), nil)
 	if err != nil {
-		return "", err
+		return "", ErrInvalidEncryptedId
 	}
 
 	return string(id), nil
